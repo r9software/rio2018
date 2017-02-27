@@ -37,16 +37,44 @@
 html,body{
     margin:0;
     padding:0;
-    font-family: 'kiamedium',sans-serif;
+    font-family: 'kialight',sans-serif;
     color:#FFF;
     font-size:18px;
     background-color: #000;
 }
 h1{
-    font-size:28px;
-    color: #fff; /*#bb162b*/
+    font-size: 46px;
+}
+h2 {
+    font-size: 36px;
+}
+h1, h2{
+    color: #fff;
     padding: 5px 0px;
     margin: 6px 0px;
+}
+h1, h2, h3, h4, h5, h6, h7{
+    font-family: 'kiamedium',sans-serif;
+}
+h1 span {
+    display: inline-block;
+    position: relative;
+    border-bottom: 2px solid #FFF;
+    border-top: 2px solid #FFF;
+}
+h1 span:before, h1 span:after {
+    content: "";
+    height: 54px;
+    width: 50px;
+    position: absolute;
+}
+h1 span:before {
+    left: -50px;
+    border-bottom: 2px solid #FFF;
+}
+h1 span:after {
+    border-top: 2px solid #FFF;
+    top: -2px;
 }
 p{
     padding: 5px;
@@ -77,7 +105,6 @@ img{
 .principal-text {
     text-align: center;
     position: relative;
-    max-width: 640px;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 70px;
@@ -106,6 +133,15 @@ img.pleca-kia {
     left: 1%;
     z-index:999;
 }
+.footer-container {
+    z-index: 9999;
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    font-size: 10px;
+    font-family: 'kialight',sans-serif;
+    color: #AAA;
+}
 /****************************
  **
  **   1. Player Style
@@ -117,11 +153,10 @@ img.pleca-kia {
 }
 .controlls {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     z-index: 9;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
     padding: 20px 0;
     text-align: right;
 }
@@ -147,6 +182,7 @@ img.pleca-kia {
     position: absolute;
     top: 0;
     left: 0;
+    cursor: pointer;
 }
 .paused-container {
     position: relative;
@@ -159,6 +195,9 @@ img.pleca-kia {
     max-height:80px;
     max-width:100%;
     margin: 60px auto;
+}
+.paused-container img.video-play-btn {
+    margin: 0 auto;
 }
 /****************************
  **
@@ -173,6 +212,10 @@ img.pleca-kia {
 #logo-nuevo-rio{
     margin: 0 auto;
     position: relative;
+}
+#home h1 {
+    font-family: 'kialight', sans-serif;
+    font-size: 30px;
 }
 #home-social-btns, #home-next-btn-container {
     text-align: center;
@@ -192,14 +235,37 @@ img.pleca-kia {
  **
  ****************************/
 #device{
-    background-image: url(../media/interior_planta.jpg);
+    background-image: url(../media/instrucciones_back.jpg);
     background-size: cover;
     background-position: 50% 50%;
 }
-#device-btns {
+.text-select-device {
+    margin: 40px;
+}
+.text-select-device h2,p{
+    margin:0;
+}
+#device-btns, .interaction-btns{
     text-align: center;
     margin: 60px 0;
     width: 100%;
+}
+.device-btn, .interaction-btn{
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+    position: relative;
+    cursor: pointer;
+}
+.separator {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    text-align: center;
+    margin-right: 15px;
+}
+.separator img {
+    margin: 0 auto;
 }
 /****************************
  **
@@ -207,7 +273,7 @@ img.pleca-kia {
  **
  ****************************/
 #mobile-steps{
-    background-image: url(../media/device_back.jpg);
+    background-image: url(../media/mobile_back.jpg);
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -224,6 +290,98 @@ img.pleca-kia {
 .main-button {
     display: block;
     margin: 60px 0;
+}
+.numCircle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border: 2px solid #FFF;
+    color: #FFF;
+    text-align: center;
+    font: 19px 'kiamedium', sans-serif;
+    display: inline-block;
+}
+.inlineInstruction {
+    display: inline-block;
+    font-family: 'kiamedium',sans-serif;
+    font-weight: 400;
+}
+.mobile-step{
+    display: block;
+    margin: 10px 0;
+}
+.mobile-step span {
+    font-family: 'kialight', sans-serif;
+    font-weight: 100;
+}
+.mobile-step p.input-text {
+    width: 250px;
+    margin: 0 auto;
+    position: relative;
+    padding: 7px 0px;
+    background-color: rgba(255,255,255,0.2);
+}
+#mobile-step-1, #mobile-step-2{
+    position: relative;
+}
+@media only screen 
+and (min-width : 1024px){
+    #mobile-step-1 .mobile-step.input {
+        margin-left: 320px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    #mobile-step-1 p.input-text.circle:before {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background-color: #FFF;
+        display: block;
+        position: absolute;
+        top: 13px;
+        left: -4px;
+    }
+    #mobile-step-2 {
+        margin-left: 200px;
+    }
+    #mobile-step-2 .mobile-step.input {
+        margin-left: -300px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    #mobile-step-2 p.input-text.circle:before {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background-color: #FFF;
+        display: block;
+        position: absolute;
+        top: -5px;
+        left: 50%;
+    }
+}
+/****************************
+ **
+ **   5. Interaction section Style
+ **
+ ****************************/
+#interaction-1-container{
+    background-image: url(../media/back_pollo.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.contador {
+    background-image: url(../media/icons/back-contador.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: auto 56px;
+}
+.contador h2 {
+    line-height: 60px;
+    font-size: 30px;
 }
 /****************************
  **
@@ -254,6 +412,9 @@ and (max-width : 1024px){
         color: #FFF;
         position:relative;
         cursor: pointer;
+    }
+    h1 span:before, h1 span:after{
+        height: 28px;
     }
     #home-social-btns,#home-next-btn-container {
         text-align: center;
